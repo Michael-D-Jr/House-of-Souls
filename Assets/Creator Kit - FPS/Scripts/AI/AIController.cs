@@ -8,6 +8,8 @@ public class AIController : MonoBehaviour
 {
    public Transform player;
    public Transform ghost;
+   public Vector3 playerReset;
+   public Vector3 ghostReset;
 
    
 
@@ -56,8 +58,8 @@ public class AIController : MonoBehaviour
    {
       yield return new WaitForSeconds(.5f);
       //RestartLevel.Restart();
-      player.transform.position = new Vector3 (92f, 1f, -98f);
-      ghost.transform.position = new Vector3(-93f, 2f, 43f);
+      player.transform.position = playerReset;
+      ghost.transform.position = ghostReset;
       //GameSystem.Instance.ChangeHealth();
       
       
