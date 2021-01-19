@@ -137,6 +137,10 @@ public class GameSystem : MonoBehaviour
 
    }
 
+   /// <summary>
+   /// controls the transition back to the start screen
+   /// </summary>
+   /// <returns></returns>
    IEnumerator EndGame()
 	{
       yield return new WaitForSeconds(5f);
@@ -213,6 +217,7 @@ public class GameSystem : MonoBehaviour
 
     void Update()
     {
+      //using the timer to control the length of the game and loss condition
         if (m_TimerRunning)
         {
             m_Timer += Time.deltaTime;
@@ -263,6 +268,10 @@ public class GameSystem : MonoBehaviour
         GameSystemInfo.Instance.UpdateScore(m_Score);
     }
 
+
+   /// <summary>
+   /// Added method to allow for health lose using the existing score system
+   /// </summary>
     public void ChangeHealth()
 	 {
       if (m_Score > 0)

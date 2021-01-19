@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class AIController : MonoBehaviour
 {
+   /// <summary>
+   /// store attributes and spawn locations for the player and ghost game objects
+   /// </summary>
    public Transform player;
    public Transform ghost;
    public Vector3 playerReset;
@@ -30,6 +33,8 @@ public class AIController : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
+
+      //tells the ghost to look at and move toward player at all times unless game is paused
       transform.LookAt(player);
 
 		if (Vector3.Distance(transform.position, player.position) >= minDistance)
@@ -54,6 +59,10 @@ public class AIController : MonoBehaviour
 		}
    }
 
+   /// <summary>
+   /// IEnumerator to handle the teleportation of the player and ghost upon collision
+   /// </summary>
+   /// <returns>Moves the player and ghost back to their starting positions</returns>
    IEnumerator PlayerCaught() 
    {
       yield return new WaitForSeconds(.5f);
@@ -66,6 +75,10 @@ public class AIController : MonoBehaviour
       
    }
 
+   /// <summary>
+   /// Start Coroutine to teleport player and ghost back to start positions and remove player health
+   /// </summary>
+   /// <param name="collision">Moves back to start</param>
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.GetComponent<Controller>())
